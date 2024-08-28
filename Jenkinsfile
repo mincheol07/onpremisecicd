@@ -42,6 +42,7 @@ pipeline {
                     git config user.name "mincheol07"
                     git add /home/admin/k8s/onpremisecicd/deloyment.yaml
                     git commit -am "Update image tag to ${IMAGE_TAG}"
+                    cd /home/admin/onpremisecicd/k8s/
                     git push origin main
                     '''
                 }
