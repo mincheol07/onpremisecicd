@@ -37,9 +37,10 @@ pipeline {
                 script {
                     // Kubernetes 매니페스트 파일에서 이미지 태그를 업데이트
                     sh '''
-                    sed -i "s|image: .*$|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|" ~/k8s/deployment.yaml
+                    sed -i "s|image: .*$|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|" /home/admin/onpremisecicd/deployment.yaml
                     git config user.email "chojo480912@gmail.com"
                     git config user.name "mincheol07"
+                    git add /home/admin/onpremisecicd/deloyment.yaml
                     git commit -am "Update image tag to ${IMAGE_TAG}"
                     git push origin main
                     '''
