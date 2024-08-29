@@ -252,8 +252,6 @@ def register_product():
 @app.route("/pay", methods = ["POST"])
 def pay():
     if request.method == "POST":
-
-
         return redirect ("/")
     
 @app.route("/mypage", methods = ["GET"])
