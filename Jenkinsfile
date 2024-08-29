@@ -35,16 +35,14 @@ pipeline {
 
          stage('Update Kubernetes Manifests') {
             steps {
-                script {
-                    // Kubernetes 매니페스트 파일에서 이미지 태그를 업데이트
+               withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS_ID}", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh '''
-                    cd /home/admin/manifest
-                    sed -i "s|image: .*$|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|" deployment.yaml
+                    sed -i "s|image: .*$|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|" k8s/manifests/deployment.yaml
+                    git add k8s/manifests/deployment.yaml
                     git config user.email "chojo480912@gmail.com"
                     git config user.name "mincheol07"
-                    git add .
-                    git commit -am "Update image tag to ${IMAGE_TAG}"
-                    git push origin main
+                    git commit -m "Update image tag to ${IMAGE_TAG}"
+                    git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/your-org/your-repo.git HEAD:main
                     '''
                 }
             }
