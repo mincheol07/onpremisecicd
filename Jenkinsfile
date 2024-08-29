@@ -4,7 +4,8 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'Harbor/project/team3app'  // Harbor 프로젝트 및 이미지 이름
         IMAGE_TAG = "${env.BUILD_ID}"  // Jenkins 빌드 ID를 이미지 태그로 사용
-        REGISTRY_CREDENTIALS = 'harbor'  // Jenkins에 저장된 자격 증명 ID
+        REGISTRY_CREDENTIALS = 'harbor'
+        GIT_CREDENTIALS_ID = 'github'  // Jenkins에 저장된 자격 증명 ID
     }
 
     stages {
