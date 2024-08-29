@@ -37,8 +37,9 @@ pipeline {
             steps {
                withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS_ID}", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh '''
-                    sed -i "s|image: .*$|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|" manifests/deployment.yaml
-                    git add manifests/deployment.yaml
+                    cd /home/admin/manifest/
+                    sed -i "s|image: .*$|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|" deployment.yaml
+                    git add .
                     git config user.email "chojo480912@gmail.com"
                     git config user.name "mincheol07"
                     git commit -m "Update image tag to ${IMAGE_TAG}"
