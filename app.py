@@ -14,6 +14,7 @@ users_collection = db['users']  # 사용할 컬렉션 선택
 production = db['production']
 cart_collection = db['cart']
 pay_history = db['pay_history']
+
 fs = gridfs.GridFS(db) # gridfs를 이용하여 image 저장할 콜렉션 지정
 
 
