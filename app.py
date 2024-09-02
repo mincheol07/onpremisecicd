@@ -10,7 +10,6 @@ from bson import ObjectId
 import socket
 
 socket.setdefaulttimeout(5)
-socket.getaddrinfo('VIP_DOMAIN_NAME', 80)
 client = MongoClient('mongodb://root:VMware1!@MongoDBCluster:27017')
 db = client['test']  # 사용할 데이터베이스 선택
 users_collection = db['users']  # 사용할 컬렉션 선택
