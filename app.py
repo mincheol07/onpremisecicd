@@ -9,7 +9,7 @@ from io import BytesIO
 from bson import ObjectId
 import socket
 
-socket.setdefaulttimeout(5)
+
 client = MongoClient('mongodb://root:VMware1!@MongoDBCluster:27017')
 db = client['test']  # 사용할 데이터베이스 선택
 users_collection = db['users']  # 사용할 컬렉션 선택
@@ -40,6 +40,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_USE_SIGNER"] = True
 Session(app)
+
 
 @app.after_request
 def after_request(response):
