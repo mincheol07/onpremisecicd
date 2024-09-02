@@ -8,7 +8,7 @@ from redis import Redis
 from io import BytesIO
 from bson import ObjectId
 
-client = MongoClient('mongodb://root:VMware1!@172.24.0.60:27017')
+client = MongoClient('mongodb://root:VMware1!@MongoDBCluster:27017')
 db = client['test']  # 사용할 데이터베이스 선택
 users_collection = db['users']  # 사용할 컬렉션 선택
 production = db['production']
