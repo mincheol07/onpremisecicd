@@ -19,7 +19,7 @@ pipeline {
         stage('Build Docker Image FLASKAPP') {
             steps {
                 script {
-                    dockerImage = docker.build("${DOCKER_IMAGE_FLASK}:${IMAGE_TAG}")
+                    dockerImageFlask = docker.build("${DOCKER_IMAGE_FLASK}:${IMAGE_TAG}")
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Build Docker Image NGINX') {
             steps {
                 script {
-                    dockerImage = docker.build("${DOCKER_IMAGE_NGINX}:${IMAGE_TAG}", "nginx")
+                    dockerImageNginx = docker.build("${DOCKER_IMAGE_NGINX}:${IMAGE_TAG}", "nginx")
                 }
             }
         }
@@ -36,7 +36,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://Harbor', REGISTRY_CREDENTIALS) {
-                        dockerImage.push()
+                        dockerImageFlask.push() // flask 이미지 push
+                        dockerImageNginx.push() // nginx 이미지 push
                     }
                 }
             }
