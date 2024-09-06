@@ -13,4 +13,4 @@ pymongo==4.8.0
 redis==5.0.8
 sql==2022.4.0
 Werkzeug==3.0.3
-uWSGI==2.0.26
+gunicorn==20.1.0
