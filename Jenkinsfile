@@ -49,6 +49,7 @@ pipeline {
                     sh '''
                     #!/bin/bash
                     cd /home/admin/team3k8s/onpremise
+                    git pull origin main --rebase
                     sed -i "s|image: Harbor/project/nginx:.*$|image: ${DOCKER_IMAGE_NGINX}:${IMAGE_TAG}|" deployment.yaml # nginx 이미지 업데이트
                     sed -i "s|image: Harbor/project/flaskapp:.*$|image: ${DOCKER_IMAGE_FLASK}:${IMAGE_TAG}|" deployment.yaml # flaskapp 이미지 업데이트
                     git add .
