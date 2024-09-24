@@ -47,6 +47,7 @@ pipeline {
             steps {
                withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS_ID}", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh '''
+                    #!/bin/bash
                     cd /home/admin/team3k8s/onpremise
                     sed -i "s|image: Harbor/project/nginx:.*$|image: ${DOCKER_IMAGE_NGINX}:${IMAGE_TAG}|" deployment.yaml # nginx 이미지 업데이트
                     sed -i "s|image: Harbor/project/flaskapp:.*$|image: ${DOCKER_IMAGE_FLASK}:${IMAGE_TAG}|" deployment.yaml # flaskapp 이미지 업데이트
