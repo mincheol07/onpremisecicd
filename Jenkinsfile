@@ -47,14 +47,14 @@ pipeline {
             steps {
                withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS_ID}", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh '''
-                    cd /home/admin/onpremisecicd/manifest
+                    cd /home/admin/team3k8s/onpremise
                     sed -i "s|image: Harbor/project/nginx:.*$|image: ${DOCKER_IMAGE_NGINX}:${IMAGE_TAG}|" deployment.yaml # nginx 이미지 업데이트
                     sed -i "s|image: Harbor/project/flaskapp:.*$|image: ${DOCKER_IMAGE_FLASK}:${IMAGE_TAG}|" deployment.yaml # flaskapp 이미지 업데이트
                     git add .
                     git config user.email "chojo480912@gmail.com"
                     git config user.name "mincheol07"
                     git commit -m "Update image tag to ${IMAGE_TAG}"
-                    git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/mincheol07/onpremisecicd.git HEAD:main
+                    git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/mincheol07/team3k8s.git HEAD:main
                     '''
                 }
             }
