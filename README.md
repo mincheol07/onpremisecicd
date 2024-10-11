@@ -10,7 +10,7 @@
 
 
 ### 기술 스택 (Onpremise)
-**Ansible**, **vSphere**, **ESXi**, **Kubernetes**, **HAproxy**, **Keepalived**, **TrueNas**, **Harbor**, **MongoDB**
+**Ansible**, **vSphere**, **ESXi**, **Kubernetes**, **HAproxy**, **Keepalived**, **TrueNas**, **Harbor**, **MongoDB**, **Untangle**, **Windows AD**
 
 ### 아키텍처
 ![_파이널프로젝트.jpg](https://github.com/mincheol07/cloudcicd/blob/main/Arch.jpg)
